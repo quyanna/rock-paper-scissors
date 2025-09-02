@@ -1,2 +1,3 @@
 # rock-paper-scissors
-Project from Odin Foundations for practicing JavaScript. 
+
+A simple program that plays rock paper scissors in the console with a computer.
