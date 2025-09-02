@@ -8,9 +8,6 @@ const SCISSORS = "scissors";
 const CHOICES = 3;
 
 function getComputerChoice() {
-  // Get a random int of either 0, 1, or 2
-  // Link these numbers to inputs of rock, paper and scissors
-
   let randomInt = Math.floor(Math.random() * CHOICES);
   switch (randomInt) {
     case 0:
@@ -19,5 +16,22 @@ function getComputerChoice() {
       return PAPER;
     case 2:
       return SCISSORS;
+  }
+}
+
+//This is bad error handling because it could eventually overflow the call stack, fix later
+function getHumanChoice(message = "Enter your choice: ") {
+  let humanChoice = prompt(message);
+  switch (humanChoice.toLowerCase()) {
+    case ROCK:
+      return ROCK;
+    case PAPER:
+      return PAPER;
+    case SCISSORS:
+      return SCISSORS;
+    default:
+      return getHumanChoice(
+        "Please enter a valid input! (rock, paper, scissors): "
+      );
   }
 }
