@@ -1,3 +1,4 @@
 # rock-paper-scissors
 
-A simple program that plays rock paper scissors in the console with a computer.
+Plays 5 rounds of rock, paper, scissors against a computer.
+Made to practice and learn JavaScript, specifically DOM manipulation and Event Handling.
