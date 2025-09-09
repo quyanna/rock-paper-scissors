@@ -19,25 +19,6 @@ function getComputerChoice() {
   }
 }
 
-//DEPRECATED -- DELETE THIS ONCE YOU'RE SURE IT'S NOT NEEDED
-
-// //This is bad error handling because it could eventually overflow the call stack, fix later
-// function getHumanChoice(message = "Enter your choice: ") {
-//   let humanChoice = prompt(message);
-//   switch (humanChoice.toLowerCase()) {
-//     case ROCK:
-//       return ROCK;
-//     case PAPER:
-//       return PAPER;
-//     case SCISSORS:
-//       return SCISSORS;
-//     default:
-//       return getHumanChoice(
-//         "Please enter a valid input! (rock, paper, scissors): "
-//       );
-//   }
-// }
-
 function playGame() {
   let humanScore = 0,
     computerScore = 0;
@@ -50,6 +31,9 @@ function playGame() {
   //Get ref to results div
   const results = document.querySelector(".results");
 
+  //Get ref to score div
+  const runningScore = document.querySelector(".score");
+
   rockButton.addEventListener("click", () => {
     playRound(ROCK, getComputerChoice());
   });
@@ -60,33 +44,6 @@ function playGame() {
     playRound(SCISSORS, getComputerChoice());
   });
 
-  // OLD LOOP LOGIC TO PLAY 5 GAMES
-  // for (i = 1; i <= 5; i++) {
-  //   console.log(`Round ${i}`);
-  //   playRound(getHumanChoice(), getComputerChoice());
-  // }
-  // console.log("Game!");
-
-  // THIS IS THE OLD LOGIC TO GET FINAL SCORE
-  // if (humanScore == computerScore) {
-  //   console.log("It's a draw!");
-  // } else if (humanScore < computerScore) {
-  //   console.log("You lose!");
-  // } else {
-  //   console.log("You win!");
-  // }
-
-  // console.log(`Final scores:
-  //   Computer: ${computerScore}
-  //   Human (you): ${humanScore}`);
-
-  //Plays a round of rock paper scissors
-  // TODO: Now a round should entail printing the outcome
-  /* 
-    - Maybe turn the selected button a different color 
-    - Turn the AI button some other color 
-    - At the end of the round, reset button color
-  */
   function playRound(humanChoice, computerChoice) {
     results.replaceChildren(); // Clear any results from last round
     const humanChoiceUI = document.createElement("div");
@@ -138,6 +95,10 @@ function playGame() {
           break;
       }
     }
+
+    // UPDATE RUNNING SCORE
+    runningScore.textContent = `Human: ${humanScore}
+  Computer: ${computerScore}`;
   }
 }
 
