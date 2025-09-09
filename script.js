@@ -40,25 +40,48 @@ function playGame() {
   let humanScore = 0,
     computerScore = 0;
 
-  for (i = 1; i <= 5; i++) {
-    console.log(`Round ${i}`);
-    playRound(getHumanChoice(), getComputerChoice());
-  }
-  console.log("Game!");
+  //Add event listeners for each button
+  const rockButton = document.querySelector(".rock-btn");
+  const paperButton = document.querySelector(".paper-btn");
+  const scissorsButton = document.querySelector(".scissors-btn");
 
-  if (humanScore == computerScore) {
-    console.log("It's a draw!");
-  } else if (humanScore < computerScore) {
-    console.log("You lose!");
-  } else {
-    console.log("You win!");
-  }
+  rockButton.addEventListener("click", () => {
+    playRound(ROCK, getComputerChoice());
+  });
+  paperButton.addEventListener("click", () => {
+    playRound(PAPER, getComputerChoice());
+  });
+  scissorsButton.addEventListener("click", () => {
+    playRound(SCISSORS, getComputerChoice());
+  });
+
+  // OLD LOOP LOGIC TO PLAY 5 GAMES
+  // for (i = 1; i <= 5; i++) {
+  //   console.log(`Round ${i}`);
+  //   playRound(getHumanChoice(), getComputerChoice());
+  // }
+  // console.log("Game!");
+
+  // THIS IS THE OLD LOGIC TO GET FINAL SCORE
+  // if (humanScore == computerScore) {
+  //   console.log("It's a draw!");
+  // } else if (humanScore < computerScore) {
+  //   console.log("You lose!");
+  // } else {
+  //   console.log("You win!");
+  // }
 
   console.log(`Final scores: 
     Computer: ${computerScore}
     Human (you): ${humanScore}`);
 
   //Plays a round of rock paper scissors
+  // TODO: Now a round should entail printing the outcome
+  /* 
+    - Maybe turn the selected button a different color 
+    - Turn the AI button some other color 
+    - At the end of the round, reset button color
+  */
   function playRound(humanChoice, computerChoice) {
     let lose = function () {
       console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
@@ -69,6 +92,7 @@ function playGame() {
       console.log(`You win! ${humanChoice} beats ${computerChoice}`);
       humanScore++;
     };
+
     if (computerChoice == humanChoice) {
       console.log("It's a draw!");
     } else if (humanChoice == ROCK) {
