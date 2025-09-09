@@ -16,9 +16,30 @@
   padding: 20px;
 }
 
+.buttons > button:hover {
+  background-color: grey;
+}
+
+.rock-btn {
+  background-color: pink;
+}
+
+.paper-btn {
+  background-color: aliceblue;
+}
+
+.scissors-btn {
+  background-color: lightgreen;
+}
+
 .results {
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 20px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
 }
