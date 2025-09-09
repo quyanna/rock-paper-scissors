@@ -46,7 +46,15 @@
 
 .winner {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 20px;
-  font-size: large;
+  font-size: 24px;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.play-again-btn {
+  padding: 20px;
 }

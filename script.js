@@ -1,3 +1,8 @@
+/* 
+CURRENT ISSUES
+- Need to set up game control so that it doesn't recurse. 
+*/
+
 console.log("Hello, world!");
 
 // Define the possible choices (for now)
@@ -36,11 +41,6 @@ function playGame() {
 
   //Get ref to score div
   const runningScore = document.querySelector(".score");
-
-  // //Make sure they are showing in case we are starting a new game -- CHANGE TO A FUNCTION IN END SCREEN
-  // buttons.style.display = "flex";
-  // results.style.display = "flex";
-  // runningScore.style.display = "flex";
 
   //Set up event listeners that call playRound when player makes a choice
 
@@ -81,10 +81,26 @@ function playGame() {
 
     function gameOverScreen(winnerText) {
       buttons.style.display = "none";
-      results.style.display = "none";
       runningScore.style.display = "none";
+      results.replaceChildren();
+
+      // Add winner message and Play Again button to results div
       displayWinner = document.createElement("div");
       displayWinner.classList.add("winner");
+      displayWinner.textContent = winnerText;
+
+      playAgainBtn = document.createElement("button");
+      playAgainBtn.textContent = "Play Again?";
+      playAgainBtn.classList.add("play-again-btn");
+      displayWinner.appendChild(playAgainBtn);
+
+      results.appendChild(displayWinner);
+
+      // Listen for play again event
+      playAgainBtn.addEventListener("click", () => {
+        results.replaceChildren(); // clear results
+        return;
+      });
     }
 
     if (computerChoice == humanChoice) {
@@ -121,8 +137,10 @@ function playGame() {
     //Call game over when anyone gets a score of 5
     if (humanScore >= 5) {
       gameOverScreen("You win!");
+      return;
     } else if (computerScore >= 5) {
       gameOverScreen("You lose!");
+      return;
     }
 
     // UPDATE RUNNING SCORE
