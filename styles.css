@@ -1,24 +1,65 @@
-.title {
+#title {
   display: flex;
   justify-content: center;
 }
 
-.buttons {
+#buttons {
   display: flex;
   justify-content: center;
   gap: 5vh;
 }
 
-.buttons > button {
+#buttons > button {
   flex: auto;
   max-width: 10%;
   min-width: fit-content;
   padding: 20px;
 }
 
-.results {
+#buttons > button:hover {
+  background-color: grey;
+}
+
+#rock-btn {
+  background-color: pink;
+}
+
+#paper-btn {
+  background-color: aliceblue;
+}
+
+#scissors-btn {
+  background-color: lightgreen;
+}
+
+#results {
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 20px;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#winner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  gap: 10px;
+}
+
+#play-again-btn {
+  padding: 20px;
+}
+
+.hidden {
+  display: none !important;
 }
