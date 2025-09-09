@@ -45,6 +45,9 @@ function playGame() {
   const paperButton = document.querySelector(".paper-btn");
   const scissorsButton = document.querySelector(".scissors-btn");
 
+  //Get ref to results div
+  const results = document.querySelector(".results");
+
   rockButton.addEventListener("click", () => {
     playRound(ROCK, getComputerChoice());
   });
@@ -71,9 +74,9 @@ function playGame() {
   //   console.log("You win!");
   // }
 
-  console.log(`Final scores: 
-    Computer: ${computerScore}
-    Human (you): ${humanScore}`);
+  // console.log(`Final scores:
+  //   Computer: ${computerScore}
+  //   Human (you): ${humanScore}`);
 
   //Plays a round of rock paper scissors
   // TODO: Now a round should entail printing the outcome
@@ -83,6 +86,16 @@ function playGame() {
     - At the end of the round, reset button color
   */
   function playRound(humanChoice, computerChoice) {
+    results.replaceChildren(); // Clear any results from last round
+    const humanChoiceUI = document.createElement("div");
+    const computerChoiceUI = document.createElement("div");
+
+    humanChoiceUI.textContent = `You Chose: ${humanChoice}`;
+    computerChoiceUI.textContent = `Computer Chose: ${computerChoice}`;
+
+    results.appendChild(humanChoiceUI);
+    results.appendChild(computerChoiceUI);
+
     let lose = function () {
       console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
       computerScore++;
