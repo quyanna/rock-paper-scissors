@@ -57,12 +57,12 @@ function playGame() {
 
     let lose = function () {
       console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-      computerScore++;
+      ++computerScore;
     };
 
     let win = function () {
       console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-      humanScore++;
+      ++humanScore;
     };
 
     if (computerChoice == humanChoice) {
