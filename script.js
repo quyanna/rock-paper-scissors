@@ -19,22 +19,24 @@ function getComputerChoice() {
   }
 }
 
-//This is bad error handling because it could eventually overflow the call stack, fix later
-function getHumanChoice(message = "Enter your choice: ") {
-  let humanChoice = prompt(message);
-  switch (humanChoice.toLowerCase()) {
-    case ROCK:
-      return ROCK;
-    case PAPER:
-      return PAPER;
-    case SCISSORS:
-      return SCISSORS;
-    default:
-      return getHumanChoice(
-        "Please enter a valid input! (rock, paper, scissors): "
-      );
-  }
-}
+//DEPRECATED -- DELETE THIS ONCE YOU'RE SURE IT'S NOT NEEDED
+
+// //This is bad error handling because it could eventually overflow the call stack, fix later
+// function getHumanChoice(message = "Enter your choice: ") {
+//   let humanChoice = prompt(message);
+//   switch (humanChoice.toLowerCase()) {
+//     case ROCK:
+//       return ROCK;
+//     case PAPER:
+//       return PAPER;
+//     case SCISSORS:
+//       return SCISSORS;
+//     default:
+//       return getHumanChoice(
+//         "Please enter a valid input! (rock, paper, scissors): "
+//       );
+//   }
+// }
 
 function playGame() {
   let humanScore = 0,
