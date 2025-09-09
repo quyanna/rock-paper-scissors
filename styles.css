@@ -45,7 +45,7 @@
   gap: 8px;
 }
 
-.winner {
+#winner {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,6 +56,10 @@
   gap: 10px;
 }
 
-.play-again-btn {
+#play-again-btn {
   padding: 20px;
+}
+
+.hidden {
+  display: none !important;
 }
