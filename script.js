@@ -28,11 +28,21 @@ function playGame() {
   const paperButton = document.querySelector(".paper-btn");
   const scissorsButton = document.querySelector(".scissors-btn");
 
+  //Get ref to buttons div
+  const buttons = document.querySelector(".buttons");
+
   //Get ref to results div
   const results = document.querySelector(".results");
 
   //Get ref to score div
   const runningScore = document.querySelector(".score");
+
+  // //Make sure they are showing in case we are starting a new game -- CHANGE TO A FUNCTION IN END SCREEN
+  // buttons.style.display = "flex";
+  // results.style.display = "flex";
+  // runningScore.style.display = "flex";
+
+  //Set up event listeners that call playRound when player makes a choice
 
   rockButton.addEventListener("click", () => {
     playRound(ROCK, getComputerChoice());
@@ -55,15 +65,27 @@ function playGame() {
     results.appendChild(humanChoiceUI);
     results.appendChild(computerChoiceUI);
 
-    let lose = function () {
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-      ++computerScore;
-    };
+    // Functions for game control
 
-    let win = function () {
+    function lose() {
+      computerScore++;
+      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+      console.log(`Score is human:  ${humanScore} computer : ${computerScore}`);
+    }
+
+    function win() {
+      humanScore++;
       console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-      ++humanScore;
-    };
+      console.log(`Score is human:  ${humanScore} computer : ${computerScore}`);
+    }
+
+    function gameOverScreen(winnerText) {
+      buttons.style.display = "none";
+      results.style.display = "none";
+      runningScore.style.display = "none";
+      displayWinner = document.createElement("div");
+      displayWinner.classList.add("winner");
+    }
 
     if (computerChoice == humanChoice) {
       console.log("It's a draw!");
@@ -90,10 +112,17 @@ function playGame() {
         case ROCK:
           lose();
           break;
-        case SCISSORS:
+        case PAPER:
           win();
           break;
       }
+    }
+
+    //Call game over when anyone gets a score of 5
+    if (humanScore >= 5) {
+      gameOverScreen("You win!");
+    } else if (computerScore >= 5) {
+      gameOverScreen("You lose!");
     }
 
     // UPDATE RUNNING SCORE

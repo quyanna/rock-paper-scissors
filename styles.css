@@ -43,3 +43,10 @@
   display: flex;
   justify-content: center;
 }
+
+.winner {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: large;
+}
