@@ -63,3 +63,14 @@
 .hidden {
   display: none !important;
 }
+
+#footer {
+  padding-top: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+#footer > a {
+  color: gray;
+}
